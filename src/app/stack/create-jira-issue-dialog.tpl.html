@@ -1,0 +1,27 @@
+<form name="createJiraForm" role="form" class="form-validation" autocomplete="on">
+  <div class="modal-header dialog-header-confirm">
+    <button type="button" role="button" class="close" ng-click="vm.cancel()">&times;</button>
+    <h4 class="modal-title"><i class="fa fa-external-link fa-fw"></i> Please fill in any details</h4>
+  </div>
+
+  <div class="modal-body">
+    <p>This creates an issue on JIRA. Please fill in any details if required.</span>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" name="title" class="form-control" ng-model="vm.data.title" autofocus />
+    </div>
+    <div class="form-group">
+      <label for="assignee">Assignee</label>
+      <input id="assignee" type="text" name="assignee" class="form-control" ng-model="vm.data.assignee" placeholder="Unassigned" autofocus />
+    </div>
+    <div class="form-group">
+      <label for="details">Details</label>
+      <textarea id="details" name="details" class="form-control" style="resize: vertical; min-height: 80px" ng-model="vm.data.details" autofocus />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" role="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    <input type="submit" role="button" class="btn btn-primary" ng-click="vm.save(createJiraForm.$valid)" value="Create JIRA Issue" />
+  </div>
+</form>

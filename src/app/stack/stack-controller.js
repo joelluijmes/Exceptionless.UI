@@ -81,8 +81,17 @@
       }
 
       function createJiraTicket() {
-        stackService.createJira(_stackId);
-        vm.stack.reported_on_jira = true;
+        return dialogs.create('app/stack/create-jira-issue-dialog.tpl.html', 'CreateJiraDialog as vm').result.then(function (model) {
+          function onSuccess() {
+            vm.stack.reported_on_jira = true;
+          }
+
+          function onFailure() {
+            notificationService.error('An error occurred while creating an issue on JIRA.');
+          }
+
+          return stackService.createJira(_stackId, model).then(onSuccess, onFailure);
+        });
       }
 
       function addReferenceLink() {
@@ -271,7 +280,7 @@
       }
 
       function reportedOnJira() {
-        return vm.stack.reported_on_jira === true;
+        return false;// vm.stack.reported_on_jira === true;
       }
 
       function notificationsDisabled() {
