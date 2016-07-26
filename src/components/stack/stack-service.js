@@ -75,6 +75,10 @@
       return Restangular.one('stacks', id).one('remove-link').customPOST(url);
     }
 
+    function createJira(id) {
+      return Restangular.one('stacks', id).one('create-jira-issue').post();
+    }
+
     var service = {
       addLink: addLink,
       disableNotifications: disableNotifications,
@@ -92,7 +96,8 @@
       markNotHidden: markNotHidden,
       promote: promote,
       remove: remove,
-      removeLink: removeLink
+      removeLink: removeLink,
+      createJira: createJira
     };
 
     return service;

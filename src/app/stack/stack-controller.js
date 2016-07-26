@@ -80,6 +80,10 @@
           });
       }
 
+      function createJiraTicket() {
+        stackService.createJira(_stackId);
+      }
+
       function addReferenceLink() {
         $ExceptionlessClient.submitFeatureUsage(source + '.addReferenceLink');
         return dialogs.create('app/stack/add-reference-dialog.tpl.html', 'AddReferenceDialog as vm').result.then(function (url) {
@@ -504,6 +508,7 @@
         { name: 'Value Sum', field: 'sum:value', title: 'The sum of all event values', render: true }
       ];
 
+      vm.createJiraTicket = createJiraTicket;
       vm.get = get;
       vm.getStats = getStats;
       vm.hasTags = hasTags;
