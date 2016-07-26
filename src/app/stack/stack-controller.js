@@ -82,6 +82,7 @@
 
       function createJiraTicket() {
         stackService.createJira(_stackId);
+        vm.stack.reported_on_jira = true;
       }
 
       function addReferenceLink() {
@@ -267,6 +268,10 @@
       function isValidDate(date) {
         var d = moment(date);
         return !!date && d.isValid() && d.year() > 1;
+      }
+
+      function reportedOnJira() {
+        return vm.stack.reported_on_jira === true;
       }
 
       function notificationsDisabled() {
@@ -522,6 +527,7 @@
       vm.isRegressed = isRegressed;
       vm.isValidDate = isValidDate;
       vm.notificationsDisabled = notificationsDisabled;
+      vm.reportedOnJira = reportedOnJira;
       vm.promoteToExternal = promoteToExternal;
       vm.project = {};
       vm.remove = remove;
